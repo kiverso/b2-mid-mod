@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Studio Index page", type: :feature do
-  it "Can get all studios and their novies" do 
+RSpec.describe "Movie show page", type: :feature do
+  it "Can movie details" do 
     studio1 = Studio.create(name: "Universal")
 
     movie1 = Movie.create(title: "Movie1",
@@ -20,11 +20,11 @@ RSpec.describe "Studio Index page", type: :feature do
                           age: 30)
 
     visit("movies/#{movie1.id}")
-    expect(page).to have content('Movie1')
-    expect(page).to have content('Action')
-    expect(page).to have content('1987')
-    expect(page).to have content("Actors: #{Actor2.name}, #{Actor2.name}, #{Actor2.name}")
-    expect(page).to have content("Average actor age: 24.33")
+    expect(page).to have_content('Movie1')
+    expect(page).to have_content('Action')
+    expect(page).to have_content('1987')
+    expect(page).to have_content("Actors: #{Actor2.name}, #{Actor2.name}, #{Actor2.name}")
+    expect(page).to have_content("Average actor age: 24.33")
   end
 end
 

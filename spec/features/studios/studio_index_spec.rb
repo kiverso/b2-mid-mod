@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Studio Index page", type: :feature do
-  it "Can get all studios and their novies" do 
+  it "Can get all studios and their Movies" do 
     studio1 = Studio.create(name: "Universal")
     studio2 = Studio.create(name: "Paramount")
 
