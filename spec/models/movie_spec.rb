@@ -29,4 +29,28 @@ RSpec.describe Movie, type: :model do
 
     expect(movie1.age_ordered_actors).to eq([actor2, actor1, actor3])
   end
+
+  it "can get actors average age" do
+    studio1 = Studio.create(name: "Universal")
+
+    movie1 = Movie.create(title: "Movie1",
+                          genre: "Action",
+                          creation_year: "1987",
+                          studio_id: studio1.id
+                          )
+
+    actor1 = Actor.create(name: "Actor1",
+                          age: 22)
+
+    actor2 = Actor.create(name: "Actor2",
+                          age: 21)
+
+    actor3 = Actor.create(name: "Actor3",
+                          age: 30)
+    ActorMovie.create(actor_id: actor1.id, movie_id: movie1.id )
+    ActorMovie.create(actor_id: actor2.id, movie_id: movie1.id )
+    ActorMovie.create(actor_id: actor3.id, movie_id: movie1.id )
+
+    expect(movie1.actor_average_age).to eq(73.to_f / 3.to_f)
+  end
 end
