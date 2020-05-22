@@ -6,4 +6,8 @@ class Movie < ApplicationRecord
   validates_presence_of :title
   validates_presence_of :genre
   validates_presence_of :creation_year
+
+  def age_ordered_actors
+    actors.order(:age)
+  end
 end
